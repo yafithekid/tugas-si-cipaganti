@@ -11,14 +11,16 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
-
 Route::get('tiket','HomeController@tiket');
 
+Route::get('pesan','HomeController@pesan');
+
 Route::controllers([
-    'home' => 'HomeController',
+    'admin' => 'AdminController'
+]);
+
+
+Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);

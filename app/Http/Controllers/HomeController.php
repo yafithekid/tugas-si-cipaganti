@@ -23,14 +23,13 @@ class HomeController extends Controller {
 		//$this->middleware('auth');
 	}
 
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
 	public function tiket()
 	{
 		return view('tiket');
 	}
 
+	public function pesan()
+	{
+		return view('pesan');
+	}
 }

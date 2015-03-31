@@ -31,7 +31,7 @@
           </button>
           <a class='navbar-header'>
               <div class='logo'>
-              <img src="img/logo.png" height='50px'/>
+              <img src="{{asset('/img/logo.png')}}" height='50px'/>
           </div>
           </a>
         </div>
