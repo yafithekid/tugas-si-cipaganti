@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\Kota;
+use App\Models\Pool;
+use DB;
 class AdminController extends Controller {
 
     /**
@@ -17,7 +20,9 @@ class AdminController extends Controller {
      */
     public function getIndex()
     {
-        return view('admin.index');
+        return view('admin.index',[
+            'list_kota_pool' =>  Kota::getAllPool()
+        ]);
     }
 
 }
