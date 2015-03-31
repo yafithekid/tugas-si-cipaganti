@@ -1,0 +1,46 @@
+.btn-attention {
+    color: #fff;
+    background: #FF9A09;
+}
+
+.logo {
+    margin-left: 10px;
+    margin-right:10px;
+}
+
+.btn-seat {
+    border : 0px;
+    border-radius: 4px;
+    width: 45px;
+    height: 45px;
+    background: #CA5A40;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    line-height: 45px;
+    cursor: pointer;
+}
+#seat-description .btn-seat {
+    width:20px;
+    height:20px;
+    cursor: default;  
+}
+
+#seat-wrapper .btn-seat {
+    position: absolute;
+    /*
+    border : 0px;
+    border-radius: 4px;
+    width: 45px;
+    height: 45px;
+    background: #CA5A40;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    line-height: 45px;
+    cursor: pointer;*/
+}
+.btn-seat-disabled{
+    background: #777 !important;
+}
+
