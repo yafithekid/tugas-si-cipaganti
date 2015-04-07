@@ -7,4 +7,5 @@
 <li>Edit isi file .env bagian DB_* sesuai dengan settingan MySQL, lalu save</li>
 <li>Jalankan <i>command</i>: <code>php artisan migrate --seed</code></li>
 <li>Untuk menjalankan serve, gunakan <i>command</i>: <code>php artisan serve</code></li>
+<li><b>Note: </b>Jika ada <i>error</i> class *Seeder not found, jalankan <i>command</i>: <code>composer dump-autoload</code></li>
 </ul>
