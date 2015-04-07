@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+use App\Models\Kota;
 
 class HomeController extends Controller {
 
@@ -25,7 +26,7 @@ class HomeController extends Controller {
 
 	public function tiket()
 	{
-		return view('tiket');
+		return view('tiket',['list_kota_pool' =>  Kota::getAllPool()]);
 	}
 
 	public function pesan()

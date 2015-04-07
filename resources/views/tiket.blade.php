@@ -6,23 +6,25 @@
         <div class='form-group'>
             <label for='asal'>Asal</label>
             <select id='asal' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
-              <optgroup label="Bandung">
-                <option value="0">Pasteur</option>
-                <option value="1">Pasteur</option>
+              @foreach($list_kota_pool as $kota => $list_pool)
+              <optgroup label="{{$kota}}">
+                @foreach($list_pool as $pool)
+                 <option value="{{$pool->pool_id}}">{{$pool->nama}}</option>
+                @endforeach
               </optgroup>
+              @endforeach
             </select>
         </div>
         <div class='form-group'>
-            <label for='tujuan'>Tujuan</label>
-            <select id='tujuan' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
-              <optgroup label="Jakarta Barat">
-                <option value="0">Slipi</option>
-                <option value="1">Slipi</option>
+            <label for='asal'>Tujuan</label>
+            <select id='asal' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
+              @foreach($list_kota_pool as $kota => $list_pool)
+              <optgroup label="{{$kota}}">
+                @foreach($list_pool as $pool)
+                 <option value="{{$pool->pool_id}}">{{$pool->nama}}</option>
+                @endforeach
               </optgroup>
-              <optgroup label="Jakarta Barat">
-                <option value="0">Slipi</option>
-                <option value="1">Slipi</option>
-              </optgroup>
+              @endforeach
             </select>
         </div>
         <div class='form-group'>

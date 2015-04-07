@@ -12,6 +12,8 @@
     <!-- Loading Flat UI -->
     <link href="{{asset('/flatui/css/flat-ui.min.css')}}" rel="stylesheet">
 
+    <!-- Datetime picker -->
+    <link href="{{asset('/datetimepicker/jquery.datetimepicker.css')}}" rel='stylesheet'>
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -54,6 +56,7 @@
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="{{asset('/bootstrap/js/bootstrap.min.js')}}"></script>
       <script src="{{asset('/flatui/js/flat-ui.min.js')}}"></script>
+      <script src="{{asset('/datetimepicker/jquery.datetimepicker.js')}}"></script>
     @show
   </body>
 </html>
