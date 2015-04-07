@@ -29,7 +29,7 @@
         </div>
         <div class='form-group'>
             <label for='tanggal'>Tanggal Keberangkatan</label>
-            <input id='tanggal' class='form-control' type='text'/>
+            <input id='tanggal' class='form-control' type='date'/>
         </div>
         <center>
             <button type='submit' class='btn btn-primary'>Cari</button>
