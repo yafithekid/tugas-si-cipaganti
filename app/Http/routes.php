@@ -15,6 +15,8 @@ Route::get('tiket','HomeController@tiket');
 
 Route::get('pesan','HomeController@pesan');
 
+Route::get('konfirmasi','HomeController@konfirmasi');
+
 Route::controllers([
     'admin' => 'AdminController'
 ]);

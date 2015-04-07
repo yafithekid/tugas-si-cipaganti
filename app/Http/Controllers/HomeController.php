@@ -33,4 +33,9 @@ class HomeController extends Controller {
 	{
 		return view('pesan');
 	}
+
+	public function konfirmasi()
+	{
+		return view('konfirmasi');
+	}
 }

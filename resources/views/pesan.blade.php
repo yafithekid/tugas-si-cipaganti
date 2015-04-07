@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-        <div class='col-xs-6 col-xs-offset-2'>
+        <div class='col-md-6 col-md-offset-3'>
             <form>
                 <div class='form-group'>
                     Tiket dengan <b>Pasteur</b> - <b>Slipi</b> pada tanggal <b>4 April 2015</b> <b>18.00</b> 
@@ -20,8 +20,8 @@
                         <div>
                             <button class='btn-seat' type='button' style='top:200px; left:173px;'>1</button>
 
-                            <button class='btn-seat btn-seat-disabled' type='button' style='top:146px; left:255px;'>2</button>
-                            <button class='btn-seat disabled' type='button' style='top:200px; left:255px;'>3</button>
+                            <button class='btn-seat btn-seat-disabled' type='button' style='top:90px; left:255px;'>2</button>
+                            <button class='btn-seat disabled' type='button' style='top:146px; left:255px;'>3</button>
 
                             <button class='btn-seat' type='button' style='top:90px; left:345px;'>4</button>
                             <button class='btn-seat' type='button' style='top:146px; left:345px;'>5</button>
