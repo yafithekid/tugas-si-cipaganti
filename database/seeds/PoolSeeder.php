@@ -31,7 +31,7 @@ class PoolSeeder extends Seeder {
             ['id' => $id++, 'nama' => 'Dewi Sartika(DS)','kota_id' => 2],
             ['id' => $id++, 'nama' => 'Rawamangun (RWMGN)','kota_id' => 2],
             ['id' => $id++, 'nama' => 'Jatiwaringin (JTWRGN)','kota_id' => 2],
-            ['id' => $id++, 'nama' => 'Sumenep Blora','kota_id' => 2],
+            ['id' => $id++, 'nama' => 'Sumenep Blora (Sumenep)','kota_id' => 2],
             ['id' => $id++, 'nama' => 'Kemanggisan (KMGSN)','kota_id' => 2]
         );
 
