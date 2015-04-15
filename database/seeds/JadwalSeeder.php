@@ -5,21 +5,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class JadwalSeeder extends Seeder {
-
-	/**
-	 * Run the database seeds.
-	 *
-	 * @return void
-	 */
 	public function run()
 	{
+        // 1 hari = 262 jadwal.
 		DB::table('jadwal')->delete();
 
         $id = 1;
         $start_date = '2015-04-20';
-        $day = 1;
+        $day = 7;
 
-        for($i = 0; $i <= $day; $i++) {
+        for($i = 0; $i < $day; $i++) {
             $tanggal = date('Y-m-d',strtotime($start_date . '+'.$i.' day'));
             $jadwals = array(
                 // rute Bandung - Jakarta
