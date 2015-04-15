@@ -1,0 +1,24 @@
++--------+--------------------------------+-------------------------------------------------------+-------------------+------------------------------------------------------------+------------+
+| Domain | Method                         | URI                                                   | Name              | Action                                                     | Middleware |
++--------+--------------------------------+-------------------------------------------------------+-------------------+------------------------------------------------------------+------------+
+|        | GET|HEAD                       | /                                                     |                   | App\Http\Controllers\HomeController@tiket                  |            |
+|        | GET|HEAD                       | tiket                                                 | tiket             | App\Http\Controllers\HomeController@tiket                  |            |
+|        | GET|HEAD                       | pesan                                                 | pesan             | App\Http\Controllers\HomeController@pesan                  |            |
+|        | POST                           | konfirmasi-show                                       | konfirmasi.show   | App\Http\Controllers\HomeController@showKonfirmasi         |            |
+|        | POST                           | konfirmasi-submit                                     | konfirmasi.submit | App\Http\Controllers\HomeController@postKonfirmasi         |            |
+|        | POST                           | list_tujuan                                           | list_tujuan       | App\Http\Controllers\HomeController@listTujuan             |            |
+|        | GET|HEAD                       | admin/index/{one?}/{two?}/{three?}/{four?}/{five?}    |                   | App\Http\Controllers\AdminController@getIndex              |            |
+|        | GET|HEAD                       | admin                                                 |                   | App\Http\Controllers\AdminController@getIndex              |            |
+|        | GET|HEAD|POST|PUT|PATCH|DELETE | admin/{_missing}                                      |                   | App\Http\Controllers\AdminController@missingMethod         |            |
+|        | GET|HEAD                       | auth/register/{one?}/{two?}/{three?}/{four?}/{five?}  |                   | App\Http\Controllers\Auth\AuthController@getRegister       | guest      |
+|        | POST                           | auth/register/{one?}/{two?}/{three?}/{four?}/{five?}  |                   | App\Http\Controllers\Auth\AuthController@postRegister      | guest      |
+|        | GET|HEAD                       | auth/login/{one?}/{two?}/{three?}/{four?}/{five?}     |                   | App\Http\Controllers\Auth\AuthController@getLogin          | guest      |
+|        | POST                           | auth/login/{one?}/{two?}/{three?}/{four?}/{five?}     |                   | App\Http\Controllers\Auth\AuthController@postLogin         | guest      |
+|        | GET|HEAD                       | auth/logout/{one?}/{two?}/{three?}/{four?}/{five?}    |                   | App\Http\Controllers\Auth\AuthController@getLogout         |            |
+|        | GET|HEAD|POST|PUT|PATCH|DELETE | auth/{_missing}                                       |                   | App\Http\Controllers\Auth\AuthController@missingMethod     | guest      |
+|        | GET|HEAD                       | password/email/{one?}/{two?}/{three?}/{four?}/{five?} |                   | App\Http\Controllers\Auth\PasswordController@getEmail      | guest      |
+|        | POST                           | password/email/{one?}/{two?}/{three?}/{four?}/{five?} |                   | App\Http\Controllers\Auth\PasswordController@postEmail     | guest      |
+|        | GET|HEAD                       | password/reset/{one?}/{two?}/{three?}/{four?}/{five?} |                   | App\Http\Controllers\Auth\PasswordController@getReset      | guest      |
+|        | POST                           | password/reset/{one?}/{two?}/{three?}/{four?}/{five?} |                   | App\Http\Controllers\Auth\PasswordController@postReset     | guest      |
+|        | GET|HEAD|POST|PUT|PATCH|DELETE | password/{_missing}                                   |                   | App\Http\Controllers\Auth\PasswordController@missingMethod | guest      |
++--------+--------------------------------+-------------------------------------------------------+-------------------+------------------------------------------------------------+------------+

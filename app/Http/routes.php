@@ -19,6 +19,7 @@ Route::get('pesan',['uses'=>'HomeController@pesan','as'=>'pesan']);
 Route::post('konfirmasi-show',['uses'=>'HomeController@showKonfirmasi','as'=>'konfirmasi.show']);
 Route::post('konfirmasi-submit',['uses'=>'HomeController@postKonfirmasi','as'=>'konfirmasi.submit']);
 Route::post('list_tujuan',['uses'=>'HomeController@listTujuan','as'=>'list_tujuan']);
+Route::get('admin',['uses' => 'AdminController@getIndex','as' => 'admin']);
 Route::controllers([
     'admin' => 'AdminController'
 ]);

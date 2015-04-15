@@ -1,15 +1,15 @@
 @extends('layouts.master')
 @section('content')
 <b>Atur Jadwal</b>
-<form class='form-inline'>
-        
+<form class='form-inline' action="{{route('admin')}}" method="get">
+
         <div class='form-group'>
             <label for='asal'>Asal</label>
-            <select id='asal' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
+            <select name ='asal' id='asal' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
               @foreach($list_kota_pool as $kota => $list_pool)
               <optgroup label="{{$kota}}">
                 @foreach($list_pool as $pool)
-                 <option value="{{$pool->pool_id}}">{{$pool->nama}}</option>
+                 <option value="{{$pool->pool_id}}" @if($asal == $pool->pool_id) selected @endif >{{$pool->nama}}</option>
                 @endforeach
               </optgroup>
               @endforeach
@@ -17,36 +17,33 @@
         </div>
         <div class='form-group'>
             <label for='asal'>Tujuan</label>
-            <select id='asal' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
+            <select name="tujuan" id='tujuan' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
               @foreach($list_kota_pool as $kota => $list_pool)
               <optgroup label="{{$kota}}">
                 @foreach($list_pool as $pool)
-                 <option value="{{$pool->pool_id}}">{{$pool->nama}}</option>
+                 <option value="{{$pool->pool_id}}" @if($tujuan == $pool->pool_id) selected @endif>{{$pool->nama}}</option>
                 @endforeach
               </optgroup>
               @endforeach
             </select>
         </div>
         <div class='form-group'>
-            <label for='tujuan'>Hari</label>
-            <select id='tujuan' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
-                <option value="0">Senin</option>
-                <option value="1">Selasa</option>
-              </optgroup>
+            <label for='tujuan'>Tanggal</label>
+            <select id='tanggal' name="tanggal" class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
+                @foreach($list_tanggal as $jadwal)
+                <option value="{{ $jadwal->tanggal }}" @if($jadwal->tanggal == $tanggal) selected @endif>{{ date('l, jS F Y',strtotime($jadwal->tanggal)) }}</option>
+                @endforeach
             </select>
         </div>
         <div class='form-group'>
             <label> </label>
             <button type='submit' class='btn btn-primary' style='margin-top:20px;'>Saring</button>
         </div>
-</form>
+        </form>
         <table class='table' style='text-align:center;'>
             <tr>
                 <th>
                     <center>Brkt</center>
-                </th>
-                <th>
-                    <center>Tiba</center>
                 </th>
                 <th>
                    <center>Harga (Rp)</center>
@@ -65,82 +62,36 @@
                 </th>
             </tr>
             <!--spawn data-->
+            @if($list_jadwal == null)
+                Silakan Pilih Jadwal
+            @else
+            @foreach($list_jadwal as $jadwal)
             <tr>
                 <td>
-                    05.00
+                    {{$jadwal->waktu}}
                 </td>
                 <td>
-                    06.00
-                </td>
-                <td>
-                    <input value='100000'/>
+                    <input type="number" value='{{$jadwal->harga}}'/>
                 </td>
                 <td>
                     3<br/>
                     <a href='#'>Statistik</a>
-                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                    <div id="chartContainer{{$jadwal->id}}" style="height: 300px; width: 100%;"></div>
                 </td>
                 <td>
-                    <input type='checkbox' checked>
+                    <input type='checkbox' @if($jadwal->promo == 1) checked @endif>
                 </td>
                 <td>
-                    <input type='checkbox'>
-                </td>
-                <td>
-                    <button type='submit' class='btn btn-primary'>Simpan</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    05.00
-                </td>
-                <td>
-                    06.00
-                </td>
-                <td>
-                    <input value='80000'/>
-                </td>
-                <td>
-                    6
-                    <a href='#'>Statistik</a>
-                </td>
-                <td>
-                    <input type='checkbox' checked>
-                </td>
-                <td>
-                    <input type='checkbox' checked>
+                    <input type='checkbox' @if($jadwal->aktif == 1) checked @endif>
                 </td>
                 <td>
                     <button type='submit' class='btn btn-primary'>Simpan</button>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    05.00
-                </td>
-                <td>
-                    06.00
-                </td>
-                <td>
-                    <input value='100000'/>
-                </td>
-                <td>
-                    4
-                    <a href='#'>Statistik</a>
-                </td>
-                <td>
-                    <input type='checkbox' checked>
-                </td>
-                <td>
-                    <input type='checkbox'>
-                </td>
-                <td>
-                    <button type='submit' class='btn btn-primary'>Simpan</button>
-                </td>
-            </tr>
+            @endforeach
+            @endif
             <!--end of spawn data-->
         </table>
-        
     </div>
 </form>
 @stop
@@ -180,4 +131,17 @@ $(document).ready(function(){
     chart.render();
 });
 </script>
+
+<script type="text/javascript">
+$("select").select2({dropdownCssClass: 'dropdown-inverse'});
+$("#asal").change(function(){
+    var val = $("#asal").val();
+    $.post('{{route("list_tujuan")}}',{"asal":val,"_token":"{{csrf_token()}}"},function(data){
+        //console.log(data);
+        $("#tujuan").html(data);
+        $("select").select2({dropdownCssClass: 'dropdown-inverse'});
+    });
+});
+</script>
+
 @stop

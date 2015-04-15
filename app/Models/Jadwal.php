@@ -22,4 +22,9 @@ class Jadwal extends Model {
         return self::JUMLAH_KURSI - DB::table('pesanan')->where('jadwal_id','=',$this->id)->count();
     }
 
+    public static function getAllJadwal()
+    {
+        $jadwals = Jadwal::distinct()->select('tanggal')->orderBy('tanggal','ASC')->get();
+        return $jadwals;
+    }
 }
