@@ -12,11 +12,12 @@
 */
 
 Route::get('/','HomeController@tiket');
-Route::get('tiket','HomeController@tiket');
+Route::get('tiket',['uses'=>'HomeController@tiket','as'=>'tiket']);
 
 Route::get('pesan','HomeController@pesan');
 
 Route::get('konfirmasi','HomeController@konfirmasi');
+Route::post('list_tujuan',['uses'=>'HomeController@listTujuan','as'=>'list_tujuan']);
 
 Route::controllers([
     'admin' => 'AdminController'
