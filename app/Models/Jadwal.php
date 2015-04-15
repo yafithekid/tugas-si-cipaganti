@@ -6,6 +6,7 @@ use DB;
 class Jadwal extends Model {
 	protected $table = 'jadwal';
 
+    public $timestamps = false;
     const JUMLAH_KURSI = 8;
     public function poolAsal()
     {

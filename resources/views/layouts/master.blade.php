@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-01">
           <div class='navbar-right'>
               <ul class="nav navbar-nav">
-                <li><a href="#fakelink">Tiket</a></li>
+                <li><a href="{{route('tiket')}}">Tiket</a></li>
                 <li><a href="#fakelink">FAQ</a></li>
               </ul>
           </div>

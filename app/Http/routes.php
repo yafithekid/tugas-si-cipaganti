@@ -14,11 +14,11 @@
 Route::get('/','HomeController@tiket');
 Route::get('tiket',['uses'=>'HomeController@tiket','as'=>'tiket']);
 
-Route::get('pesan','HomeController@pesan');
+Route::get('pesan',['uses'=>'HomeController@pesan','as'=>'pesan']);
 
-Route::get('konfirmasi','HomeController@konfirmasi');
+Route::post('konfirmasi-show',['uses'=>'HomeController@showKonfirmasi','as'=>'konfirmasi.show']);
+Route::post('konfirmasi-submit',['uses'=>'HomeController@postKonfirmasi','as'=>'konfirmasi.submit']);
 Route::post('list_tujuan',['uses'=>'HomeController@listTujuan','as'=>'list_tujuan']);
-
 Route::controllers([
     'admin' => 'AdminController'
 ]);

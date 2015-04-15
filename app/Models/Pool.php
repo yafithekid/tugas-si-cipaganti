@@ -3,7 +3,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Pool extends Model {
-    protected $table = 'pool';
+    protected $table = 'pool'; 
+    public $timestamps = false;
     public function kota()
     {
         return $this->hasOne('App\Models\Kota','kota_id','id');

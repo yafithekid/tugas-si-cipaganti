@@ -55,7 +55,7 @@
                     @if ($jadwal->getSisaKursi() == 0)
                         <button disabled type='submit' class='btn btn-attention'>Habis</button>
                     @else
-                        <button type='submit' class='btn btn-attention'>Pesan</button><br/>
+                        <a href='{{route('pesan',['jadwal_id'=>$jadwal->id])}}' type='submit' class='btn btn-attention'>Pesan</a><br/>
                         Sisa: {{$jadwal->getSisaKursi()}}
                     @endif
                 </td>

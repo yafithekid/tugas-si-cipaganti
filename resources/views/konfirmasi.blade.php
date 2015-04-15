@@ -1,13 +1,15 @@
 @extends('layouts.master')
 @section('content')
     <h4>Konfirmasi Pesanan Tiket</h4>
-    <div class='col-md-6 col-md-offset-3'>
+    
+    
+    <div class='col-md-8 col-md-offset-3'>
         <div class='col-md-6'>
             <div>
                 <b>Tanggal Pergi</b>
             </div>
             <div>
-                01-01-2014
+                {{$jadwal->tanggal}}
             </div>
                 
         </div>
@@ -16,7 +18,7 @@
                 <b>Pukul</b>
             </div>
             <div>
-                06:00
+                {{$jadwal->waktu}}
             </div>
         </div>
         <div class='col-md-12' style='margin:10px;'></div>
@@ -25,7 +27,7 @@
                 <b>Asal</b>
             </div>
             <div>
-                Pasteur
+                {{$jadwal->poolAsal->nama}}
             </div>
                 
         </div>
@@ -34,7 +36,7 @@
                 <b>Tujuan</b>
             </div>
             <div>
-                Metropolitan
+                {{$jadwal->poolTujuan->nama}}
             </div>
         </div>
         <div class='col-md-12' style='margin:10px;'></div>
@@ -43,7 +45,7 @@
                 <b>Nama Pemesan</b>
             </div>
             <div>
-                Paijo
+                {{$pesanan->nama_pemesan}}
             </div>
                 
         </div>
@@ -52,24 +54,39 @@
                 <b>No Telpon</b>
             </div>
             <div>
-                14045
+                {{$pesanan->no_telepon}}
             </div>
         </div>
         <div class='col-md-12' style='margin:10px;'></div>
-        <div class='col-md-12'>
+        <div class='col-md-6'>
+            <div>
+                <b>No kursi</b>
+            </div>
+            <div>
+                {{$pesanan->no_kursi}}
+            </div>
+        </div>
+        <div class='col-md-6'>
             <div>
                 <b>Biaya</b>
             </div>
             <div>
-                50000 (Rp)
+                {{$jadwal->harga}} (Rp)
             </div>
         </div>
-        <br/>
-        <div class='col-md-12' style='margin:10px;'></div>
         <div>
             Pastikan data di atas benar. Setelah anda menekan tombol konfirmasi, SMS informasi pembayaran akan dikirimkan ke no. telepon anda.
         </div>
-        <center><button class='btn btn-success'>Konfirmasi</button></center>
+        <form method='post' action='{{route('konfirmasi.submit')}}'>
+            <input name='_token' type='hidden' value='{{csrf_token()}}' >
+            <input name='jadwal_id' type='hidden' value='{{$jadwal->id}}'>
+            <input name='nama_pemesan' type='hidden' value='{{$pesanan->nama_pemesan}}'>
+            <input name='no_telepon' type='hidden' value='{{$pesanan->no_telepon}}'>
+            <input name='no_kursi' type='hidden' value='{{$pesanan->no_kursi}}'>
+            <center><input type='submit' class='btn btn-success' value='Konfirmasi'></center>
+        </form>
+        <div class='col-md-12' style='margin:10px;'></div>
     </div>
+
 
 @endsection

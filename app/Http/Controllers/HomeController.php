@@ -1,7 +1,9 @@
 <?php namespace App\Http\Controllers;
 use App\Models\Kota;
 use App\Models\Jadwal;
+use App\Models\Pesanan;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller {
 
@@ -56,11 +58,53 @@ class HomeController extends Controller {
 
 	public function pesan()
 	{
-		return view('pesan');
+		$jadwal_id = Request::input('jadwal_id');
+		if ($jadwal_id === null){
+			//belum pilih jadwal, redirect ke tiket
+			return redirect()->route('tiket');
+		} else {
+			$jadwal = Jadwal::find($jadwal_id);
+			//list daftar kursi yang kosong
+			$list_pesanan = Pesanan::where('jadwal_id','=',$jadwal->id)->get();
+			$kursi_terisi = [];
+			for($i = 1; $i <= 9; ++$i){
+				$kursi_terisi[$i] = false;
+			}
+			foreach ($list_pesanan as $pesanan) {
+				$kursi_terisi[$pesanan->no_kursi] = true;
+			}
+			return view('pesan',compact('jadwal','kursi_terisi'));
+		}
+		
 	}
 
-	public function konfirmasi()
+	public function showKonfirmasi()
 	{
-		return view('konfirmasi');
+		$jadwal_id = Request::input('jadwal_id');
+		$nama_pemesan = Request::input('nama_pemesan');
+		$no_telepon = Request::input('no_telepon');
+		$no_kursi = Request::input('no_kursi');
+		
+
+		//buat objek, biar rapi
+		$jadwal = Jadwal::findOrFail($jadwal_id);
+		$pesanan = new Pesanan(['jadwal_id'=>$jadwal_id,'nama_pemesan' => $nama_pemesan,'no_telepon' => $no_telepon,'no_kursi'=>$no_kursi]);
+		return view('konfirmasi',compact('jadwal','pesanan'));
+	}
+
+	public function postKonfirmasi()
+	{
+		$pesanan = new Pesanan([
+			'jadwal_id' => Request::input('jadwal_id'),
+			'nama_pemesan' => Request::input('nama_pemesan'),
+			'no_telepon' => Request::input('no_telepon'),
+			'no_kursi' => Request::input('no_kursi')
+		]);
+		$jadwal = Jadwal::findOrFail(Request::input('jadwal_id'));
+		if ($pesanan->save()){
+			return view('konfirmasi_berhasil');
+		} else {
+			return view('konfirmasi',compact('jadwal','pesanan'));
+		}
 	}
 }

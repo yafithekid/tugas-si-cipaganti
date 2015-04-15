@@ -43,4 +43,7 @@
 .btn-seat-disabled{
     background: #777 !important;
 }
+.btn-seat-selected {
+    background: #2ecc71 !important;
+}
 
