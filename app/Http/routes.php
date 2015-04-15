@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/','HomeController@tiket');
 Route::get('tiket','HomeController@tiket');
 
 Route::get('pesan','HomeController@pesan');
