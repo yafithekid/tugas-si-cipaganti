@@ -52,7 +52,12 @@
                 <td>{{$jadwal->waktu}}</td>
                 <td>{{$jadwal->harga}}</td>
                 <td>
-                    <button disabled type='submit' class='btn btn-attention'>Habis</button>
+                    @if ($jadwal->getSisaKursi() == 0)
+                        <button disabled type='submit' class='btn btn-attention'>Habis</button>
+                    @else
+                        <button type='submit' class='btn btn-attention'>Pesan</button><br/>
+                        Sisa: {{$jadwal->getSisaKursi()}}
+                    @endif
                 </td>
             </tr>
             @endforeach
