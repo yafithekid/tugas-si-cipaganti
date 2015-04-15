@@ -49,4 +49,14 @@ class AdminController extends Controller {
         return view('admin.index',compact('tanggal','list_tanggal','list_kota_pool','list_jadwal','asal','tujuan','list_kota_pool','list_tujuan_kota_pool'));
     }
 
+    public function updateData()
+    {
+        $harga = Request::input('harga');
+        $promo = Request::input('promo');
+        $aktif = Request::input('aktif');
+        var_dump($harga);
+        var_dump($promo);
+        var_dump($aktif);
+    }
+
 }

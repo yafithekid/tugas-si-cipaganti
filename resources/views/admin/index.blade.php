@@ -71,7 +71,7 @@
                     {{$jadwal->waktu}}
                 </td>
                 <td>
-                    <input type="number" value='{{$jadwal->harga}}'/>
+                    <input id="harga" type="number" value='{{$jadwal->harga}}'/>
                 </td>
                 <td>
                     3<br/>
@@ -79,13 +79,13 @@
                     <div id="chartContainer{{$jadwal->id}}" style="height: 300px; width: 100%;"></div>
                 </td>
                 <td>
-                    <input type='checkbox' @if($jadwal->promo == 1) checked @endif>
+                    <input type='checkbox' id="promo" @if($jadwal->promo == 1) checked @endif>
                 </td>
                 <td>
-                    <input type='checkbox' @if($jadwal->aktif == 1) checked @endif>
+                    <input type='checkbox' id="aktif" @if($jadwal->aktif == 1) checked @endif>
                 </td>
                 <td>
-                    <button type='submit' class='btn btn-primary'>Simpan</button>
+                    <button type='submit' id="{{$jadwal->id}}" name="simpanbutton" class='btn btn-primary'>Simpan</button>
                 </td>
             </tr>
             @endforeach
@@ -142,6 +142,17 @@ $("#asal").change(function(){
         $("select").select2({dropdownCssClass: 'dropdown-inverse'});
     });
 });
+
+$("[name=simpanbutton]").click(function(){
+    var harga = $(this).closest("tr").find("#harga").val();
+    var promo = $(this).closest("tr").find("#promo").is(':checked')
+    var aktif = $(this).closest("tr").find("#aktif").is(':checked');
+
+    $.post('{{route("updateData")}}',{"harga":harga,"promo":promo,"aktif":aktif,"_token":"{{ csrf_token() }}"},function(data){
+        console.log(data);
+    });
+})
+
 </script>
 
 @stop
