@@ -70,7 +70,8 @@ class AdminController extends Controller
         $tujuan = Request::input('tujuan');
         $tanggal = Request::input('tanggal');
         $waktu = Request::input('waktu');
-        $pesanan = Pesanan::getPesanan($asal, $tujuan, $tanggal, $waktu);
-        dd($pesanan);
+        $list_pesanan = Pesanan::getPesanan($asal, $tujuan, $tanggal, $waktu);
+
+        return view('admin.grafik',compact('list_pesanan'));
     }
 }

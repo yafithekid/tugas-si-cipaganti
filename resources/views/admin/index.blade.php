@@ -91,7 +91,6 @@
                      ?>
                     <br/>
                     <a class="lihat_statistik" id="{{ $jadwal->id }}">Statistik</a>
-                    <div id="chartContainer{{$jadwal->id}}"></div>
                 </td>
                 <td>
                     <input type='checkbox' id="promo" @if($jadwal->promo == 1) checked @endif>
@@ -115,36 +114,7 @@
 <script type="text/javascript" src="{{asset('/canvasjs/js/canvasjs.min.js')}}"></script>
 <script type="text/javascript">
 $("select").select2({dropdownCssClass: 'dropdown-inverse'});
-$(document).ready(function(){
-    var chart = new CanvasJS.Chart("chartContainer",
-    {
-    
-      /*title:{
-        text: "Penumpang"
-      },*/
-      axisX:{
-            valueFormatString: "DD-MMM"
-        },
-       data: [
-          {        
-            type: "line",
-            
-            dataPoints: [
-            { x: new Date(2015,04,01), y: 4 },
-            { x: new Date(2015,04,02), y: 5 },
-            { x: new Date(2015,04,03), y: 6 },
-            { x: new Date(2015,04,04), y: 3 },
-            { x: new Date(2015,04,05), y: 2 },
-            { x: new Date(2015,04,06), y: 2 },
-            { x: new Date(2015,04,07), y: 1 },      
-            ]
-          }       
-            
-          ]
-    });
 
-    chart.render();
-});
 </script>
 
 <script type="text/javascript">
@@ -190,6 +160,10 @@ $(".lihat_statistik").click(function(){
 </script>
 
 <div id="gakjelas">
+
+</div>
+
+<div id="test_chart">
 
 </div>
 
