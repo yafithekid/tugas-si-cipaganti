@@ -159,7 +159,11 @@ $(".lihat_statistik").click(function(){
 })
 
 $(document).ready(function(){
-    $("#saringan").attr("disabled",true);
+    var asal = {{$asal}};
+    if(asal === null)
+    {
+        $("#saringan").attr("disabled",true);
+    }
 })
 
 </script>
