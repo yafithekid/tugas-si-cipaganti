@@ -71,6 +71,6 @@ class AdminController extends Controller
         $tanggal = Request::input('tanggal');
         $waktu = Request::input('waktu');
         $pesanan = Pesanan::getPesanan($asal, $tujuan, $tanggal, $waktu);
-
+        dd($pesanan);
     }
 }

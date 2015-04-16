@@ -181,7 +181,6 @@ $(".lihat_statistik").click(function(){
     var tujuan = $("#tujuan").val();
     var waktu = $(this).closest('tr').find('#berangkat').html();
     var tanggal = $('#tanggal').val();
-    alert(asal +"\n" + tujuan + "\n" + waktu + "\n" + tanggal);
 
     $.post('{{ route('getDataStatistic') }}', {"_token":"{{csrf_token()}}", "asal":asal, "tujuan":tujuan, "waktu":waktu, "tanggal":tanggal},function(data){
         $("#gakjelas").html(data);

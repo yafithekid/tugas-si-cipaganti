@@ -12,8 +12,7 @@ class Pesanan extends Model {
     public static function getPesanan($asal, $tujuan, $tanggal, $waktu)
     {
         $list_jadwal_id = DB::table('jadwal')->select('id')->where('asal_pool_id',$asal)->where('tujuan_pool_id',$tujuan)->where('tanggal','<=',$tanggal)->where('waktu',$waktu)->lists('id');
-        dd($list_jadwal_id);
-        $list_pesanan = DB::table('pesanan')->whereIn('jadwal_id',$list_jadwal_id)->get();
+        $list_pesanan = DB::table('pesanan')->select(DB::raw('count(*) as jumlah'))->whereIn('jadwal_id',$list_jadwal_id)->groupBy('jadwal_id')->get();
         return $list_pesanan;
     }
 
