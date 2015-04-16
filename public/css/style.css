@@ -47,3 +47,7 @@
     background: #2ecc71 !important;
 }
 
+.lihat_statistik:hover {
+    cursor: pointer;
+}
+

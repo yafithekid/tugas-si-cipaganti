@@ -21,6 +21,8 @@ Route::post('konfirmasi-submit',['uses'=>'HomeController@postKonfirmasi','as'=>'
 Route::post('list_tujuan',['uses'=>'HomeController@listTujuan','as'=>'list_tujuan']);
 Route::get('admin',['uses' => 'AdminController@getIndex','as' => 'admin']);
 Route::post('updateData',['uses'=>'AdminController@updateData','as'=>'updateData']);
+Route::post('getDataStatistic',['uses'=>'AdminController@getDataStatistic','as'=>'getDataStatistic']);
+
 Route::controllers([
     'admin' => 'AdminController'
 ]);
