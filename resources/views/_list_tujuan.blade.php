@@ -1,4 +1,5 @@
 <select name='tujuan' id='tujuan' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
+  @if ($list_tujuan_kota_pool !== null)
   @foreach($list_tujuan_kota_pool as $kota => $list_pool)
   <optgroup label="{{$kota}}">
     @foreach($list_pool as $pool)
@@ -6,4 +7,6 @@
     @endforeach
   </optgroup>
   @endforeach
+  @endif
+  
 </select>
