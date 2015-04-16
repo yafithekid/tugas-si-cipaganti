@@ -153,17 +153,13 @@ $(".lihat_statistik").click(function(){
     var tanggal = $('#tanggal').val();
 
     $.post('{{ route('getDataStatistic') }}', {"_token":"{{csrf_token()}}", "asal":asal, "tujuan":tujuan, "waktu":waktu, "tanggal":tanggal},function(data){
-        $("#gakjelas").html(data);
+        $("#debug").html(data);
     });
 })
 
 </script>
 
-<div id="gakjelas">
-
-</div>
-
-<div id="test_chart">
+<div id="debug">
 
 </div>
 
