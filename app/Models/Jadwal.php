@@ -27,4 +27,21 @@ class Jadwal extends Model {
         $jadwals = Jadwal::distinct()->select('tanggal')->orderBy('tanggal','ASC')->get();
         return $jadwals;
     }
+
+    public static function updateJadwal($harga, $promo, $aktif, $id)
+    {
+        if($aktif == 'true')
+        {
+            $aktif = 1;
+        } else {
+            $aktif = 0;
+        }
+        if($promo == 'true')
+        {
+            $promo = 1;
+        } else {
+            $promo = 0;
+        }
+        DB::table('jadwal')->where('id',$id)->update(['harga'=>$harga,'aktif'=>$aktif,'promo'=>$promo]);
+    }
 }

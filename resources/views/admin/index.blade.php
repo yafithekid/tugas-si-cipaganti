@@ -93,10 +93,10 @@
                     <a class="lihat_statistik" id="{{ $jadwal->id }}">Statistik</a>
                 </td>
                 <td>
-                    <input type='checkbox' id="promo" @if($jadwal->promo == 1) checked @endif>
+                    <input type='checkbox' id="promo" @if($jadwal->aktif == 1) checked @endif>
                 </td>
                 <td>
-                    <input type='checkbox' id="aktif" @if($jadwal->aktif == 1) checked @endif>
+                    <input type='checkbox' id="aktif" @if($jadwal->promo == 1) checked @endif>
                 </td>
                 <td>
                     <button type='submit' id="{{$jadwal->id}}" name="simpanbutton" class='btn btn-primary'>Simpan</button>
@@ -141,8 +141,9 @@ $("[name=simpanbutton]").click(function(){
     var harga = $(this).closest("tr").find("#harga").val();
     var promo = $(this).closest("tr").find("#promo").is(':checked')
     var aktif = $(this).closest("tr").find("#aktif").is(':checked');
-    $.post('{{route("updateData")}}',{"harga":harga,"promo":promo,"aktif":aktif,"_token":"{{ csrf_token() }}"},function(data){
-        console.log(data);
+    $.post('{{route("updateData")}}',{"id":id,"harga":harga,"promo":promo,"aktif":aktif,"_token":"{{ csrf_token() }}"},function(data){
+        //$("#debug").html(data);
+        alert('Data berhasil disimpan');
     });
 })
 
@@ -153,13 +154,17 @@ $(".lihat_statistik").click(function(){
     var tanggal = $('#tanggal').val();
 
     $.post('{{ route('getDataStatistic') }}', {"_token":"{{csrf_token()}}", "asal":asal, "tujuan":tujuan, "waktu":waktu, "tanggal":tanggal},function(data){
-        $("#debug").html(data);
+        $("#chart_div").html(data);
     });
 })
 
 </script>
 
 <div id="debug">
+
+</div>
+
+<div id="chart_div">
 
 </div>
 

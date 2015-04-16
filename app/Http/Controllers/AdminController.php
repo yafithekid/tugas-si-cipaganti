@@ -59,9 +59,8 @@ class AdminController extends Controller
         $harga = Request::input('harga');
         $promo = Request::input('promo');
         $aktif = Request::input('aktif');
-        var_dump($harga);
-        var_dump($promo);
-        var_dump($aktif);
+        $id = Request::input('id');
+        Jadwal::updateJadwal($harga, $promo, $aktif, $id);
     }
 
     public function getDataStatistic()
