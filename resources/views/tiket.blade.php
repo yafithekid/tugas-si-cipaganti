@@ -50,7 +50,9 @@
             @foreach($list_jadwal as $jadwal)
             <tr>
                 <td>{{$jadwal->waktu}}</td>
-                <td>{{$jadwal->harga}}</td>
+                <td>{{$jadwal->harga}}
+                    @if($jadwal->promo)<br/><div class='label label-warning'>Promo!</div> @endif
+                </td>
                 <td>
                     @if ($jadwal->getSisaKursi() == 0)
                         <button disabled type='submit' class='btn btn-attention'>Habis</button>

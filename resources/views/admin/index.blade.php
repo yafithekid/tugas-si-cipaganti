@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
 <b>Atur Jadwal</b>
-{{$asal}}
 <form class='form-inline' action="{{route('admin')}}" method="get">
 
         <div class='form-group'>
@@ -19,15 +18,7 @@
         </div>
         <div class='form-group'>
             <label for='asal'>Tujuan</label>
-            <select name="tujuan" id='tujuan' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
-              @foreach($list_kota_pool as $kota => $list_pool)
-              <optgroup label="{{$kota}}">
-                @foreach($list_pool as $pool)
-                 <option value="{{$pool->pool_id}}" @if($tujuan == $pool->pool_id) selected @endif>{{$pool->nama}}</option>
-                @endforeach
-              </optgroup>
-              @endforeach
-            </select>
+            @include('_list_tujuan',compact('list_tujuan_pool_kota','tujuan'))
         </div>
         <div class='form-group'>
             <label for='tujuan'>Tanggal</label>
@@ -93,10 +84,10 @@
                     <a class="lihat_statistik" id="{{ $jadwal->id }}">Statistik</a>
                 </td>
                 <td>
-                    <input type='checkbox' id="promo" @if($jadwal->aktif == 1) checked @endif>
+                    <input type='checkbox' name='aktif' id="aktif" @if($jadwal->aktif == 1) checked @endif>
                 </td>
                 <td>
-                    <input type='checkbox' id="aktif" @if($jadwal->promo == 1) checked @endif>
+                    <input type='checkbox' name='promo' id="promo" @if($jadwal->promo == 1) checked @endif>
                 </td>
                 <td>
                     <button type='submit' id="{{$jadwal->id}}" name="simpanbutton" class='btn btn-primary'>Simpan</button>
@@ -159,11 +150,12 @@ $(".lihat_statistik").click(function(){
 })
 
 $(document).ready(function(){
-    var asal = {{$asal}};
+    var asal = '{{$asal}}';
     if(asal === null)
     {
         $("#saringan").attr("disabled",true);
     }
+    
 })
 
 </script>

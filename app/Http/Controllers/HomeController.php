@@ -43,7 +43,7 @@ class HomeController extends Controller {
 			
 			if ($tujuan !== null){
 				//query jadwal
-				$list_jadwal = Jadwal::where('asal_pool_id','=',$asal)->where('tujuan_pool_id','=',$tujuan)->where('tanggal','=',$tanggal)->get();
+				$list_jadwal = Jadwal::where('asal_pool_id','=',$asal)->where('tujuan_pool_id','=',$tujuan)->where('tanggal','=',$tanggal)->where('aktif','=',1)->get();
 			}
 		}
 		return view('tiket',compact('list_jadwal','list_kota_pool','list_tujuan_kota_pool','asal','tujuan','tanggal'));

@@ -26,8 +26,9 @@ class AdminController extends Controller
      */
     public function getIndex()
     {
-        $asal = Request::input('asal', null);
-        $tujuan = Request::input('tujuan', null);
+        //biar gak error ini
+        $asal = Request::input('asal');
+        $tujuan = Request::input('tujuan');
         $tanggal = Request::input('tanggal', '2015-14-20');
 
         $list_tanggal = Jadwal::getAllJadwal();
@@ -50,7 +51,6 @@ class AdminController extends Controller
         if ($asal != null && $tujuan != null) {
             $list_spesific_pesanan = Pesanan::getSpesificPesanan($asal, $tujuan, $tanggal);
         }
-
         return view('admin.index', compact('list_spesific_pesanan', 'tanggal', 'list_tanggal', 'list_kota_pool', 'list_jadwal', 'asal', 'tujuan', 'list_kota_pool', 'list_tujuan_kota_pool', 'list_pesanan'));
     }
 
