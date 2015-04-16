@@ -7,7 +7,7 @@
         <div class='form-group'>
             <label for='asal'>Asal</label>
             <select name ='asal' id='asal' class="form-control select  select-block mbl" style='border: 2px solid #bdc3c7;'>
-              <option value="0" @if($asal == null) selected @endif>--- Silakan pilih pool asal ---</option>
+              <option value="0" @if($asal == null) selected  @endif>--- Silakan pilih pool asal ---</option>
               @foreach($list_kota_pool as $kota => $list_pool)
               <optgroup label="{{$kota}}">
                 @foreach($list_pool as $pool)
@@ -156,6 +156,10 @@ $(".lihat_statistik").click(function(){
     $.post('{{ route('getDataStatistic') }}', {"_token":"{{csrf_token()}}", "asal":asal, "tujuan":tujuan, "waktu":waktu, "tanggal":tanggal},function(data){
         $("#chart_div").html(data);
     });
+})
+
+$(document).ready(function(){
+    $("#saringan").attr("disabled",true);
 })
 
 </script>
