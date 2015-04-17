@@ -7,7 +7,7 @@ class Jadwal extends Model {
 	protected $table = 'jadwal';
 
     public $timestamps = false;
-    const JUMLAH_KURSI = 8;
+    const JUMLAH_KURSI = 9;
     public function poolAsal()
     {
         return $this->belongsTo('App\Models\Pool','asal_pool_id','id');
